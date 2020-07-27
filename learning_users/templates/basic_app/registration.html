@@ -1,0 +1,23 @@
+{% extends "basic_app/base.html" %}
+{% load static %} <!--To load file sin the page eg. image or logo -->
+
+{% block body_block %}
+
+<div class="jumbotron">
+	{% if registered %}
+		<h1>Thank you for registering</h1>
+	{% else %}
+		<h1>Register Here:</h1>
+		<h3>Fill Out The Form:</h3>
+		<form method="post" enctype="multipart/form-data">
+			<!--enctype="multipart/form-data" is used fro uploading profile pic -->
+			{% csrf_token %}
+			{{ user_form.as_p }}
+
+			{{ profile_form.as_p }}
+			<input type="submit" name="" value="Register">
+
+		</form>
+	{% endif %}
+</div>
+{% endblock %}
